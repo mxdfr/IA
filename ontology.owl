@@ -1,16 +1,293 @@
 <?xml version="1.0"?>
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.semanticweb.org/maxdefroe/ontologies/2022/8/untitled-ontology-40"
+     xml:base="http://www.semanticweb.org/maxdefroe/ontologies/2022/8/ontology"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     ontologyIRI="http://www.semanticweb.org/maxdefroe/ontologies/2022/8/untitled-ontology-40">
+     ontologyIRI="http://www.semanticweb.org/maxdefroe/ontologies/2022/8/ontology">
+    <Prefix name="" IRI="http://www.semanticweb.org/maxdefroe/ontologies/2022/8/untitled-ontology-40"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="/Asian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/BodyParts"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Brain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Chess"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Cuisines"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Diary"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Disability"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Disease"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Dizziness"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Drinks"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Elbows"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Fever"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Fish"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Food"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Fried_Rice"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Grains"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/HealthCondition"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Injury"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Italian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Knees"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Meat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Muscles"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/NurientDificiency"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Pain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Pizza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Recipe"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Rugby"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Running"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Salad"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Sandwich"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Soccer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Sports"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Symptom"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Tennis"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Vegitarian"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="/Vegetables/Fruit"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="/Asian"/>
+        <Class IRI="/Cuisines"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Brain"/>
+        <Class IRI="/BodyParts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Chess"/>
+        <Class IRI="/Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Diary"/>
+        <Class IRI="/Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Disability"/>
+        <Class IRI="/Symptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Disease"/>
+        <Class IRI="/HealthCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Dizziness"/>
+        <Class IRI="/Symptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Drinks"/>
+        <Class IRI="/Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Elbows"/>
+        <Class IRI="/BodyParts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Fever"/>
+        <Class IRI="/Symptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Fish"/>
+        <Class IRI="/Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Fried_Rice"/>
+        <Class IRI="/Recipe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Grains"/>
+        <Class IRI="/Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Injury"/>
+        <Class IRI="/HealthCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Italian"/>
+        <Class IRI="/Cuisines"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Knees"/>
+        <Class IRI="/BodyParts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Meat"/>
+        <Class IRI="/Food"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Muscles"/>
+        <Class IRI="/BodyParts"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/NurientDificiency"/>
+        <Class IRI="/HealthCondition"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Pain"/>
+        <Class IRI="/Symptom"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Pizza"/>
+        <Class IRI="/Recipe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Rugby"/>
+        <Class IRI="/Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Running"/>
+        <Class IRI="/Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Salad"/>
+        <Class IRI="/Recipe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Sandwich"/>
+        <Class IRI="/Recipe"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Soccer"/>
+        <Class IRI="/Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Tennis"/>
+        <Class IRI="/Sports"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Vegitarian"/>
+        <Class IRI="/Cuisines"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="/Vegetables/Fruit"/>
+        <Class IRI="/Food"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="/Asian"/>
+        <Class IRI="/Italian"/>
+        <Class IRI="/Vegitarian"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/BodyParts"/>
+        <Class IRI="/Cuisines"/>
+        <Class IRI="/Food"/>
+        <Class IRI="/HealthCondition"/>
+        <Class IRI="/Recipe"/>
+        <Class IRI="/Sports"/>
+        <Class IRI="/Symptom"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/Brain"/>
+        <Class IRI="/Elbows"/>
+        <Class IRI="/Knees"/>
+        <Class IRI="/Muscles"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/Chess"/>
+        <Class IRI="/Rugby"/>
+        <Class IRI="/Running"/>
+        <Class IRI="/Soccer"/>
+        <Class IRI="/Tennis"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/Diary"/>
+        <Class IRI="/Drinks"/>
+        <Class IRI="/Fish"/>
+        <Class IRI="/Grains"/>
+        <Class IRI="/Meat"/>
+        <Class IRI="/Vegetables/Fruit"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/Disability"/>
+        <Class IRI="/Dizziness"/>
+        <Class IRI="/Fever"/>
+        <Class IRI="/Pain"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/Disease"/>
+        <Class IRI="/Injury"/>
+        <Class IRI="/NurientDificiency"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="/Fried_Rice"/>
+        <Class IRI="/Pizza"/>
+        <Class IRI="/Salad"/>
+        <Class IRI="/Sandwich"/>
+    </DisjointClasses>
 </Ontology>
 
 
