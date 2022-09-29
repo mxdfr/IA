@@ -5,7 +5,8 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-12="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12"/>
     
 
@@ -24,8 +25,6 @@
     <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLObjectProperty_35f6eeef_5049_4cb6_b49c_7d853ee6aed1 -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLObjectProperty_35f6eeef_5049_4cb6_b49c_7d853ee6aed1">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_74b7d53a_9890_4584_ad3d_8e7517470808"/>
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_85940378_eca6_4b29_b7f8_33a26eb7135a"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_67f20132_f8a2_46e7_8cb9_b2a38b5a892e"/>
         <rdfs:label xml:lang="en">Prevents</rdfs:label>
     </owl:ObjectProperty>
@@ -134,15 +133,6 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">WhiteGrains</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_199e75d7_06e2_463f_8535_389ef54cf49f -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_199e75d7_06e2_463f_8535_389ef54cf49f">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
-        <rdfs:label xml:lang="en">Joints</rdfs:label>
     </owl:Class>
     
 
@@ -262,28 +252,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_74b7d53a_9890_4584_ad3d_8e7517470808 -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_74b7d53a_9890_4584_ad3d_8e7517470808">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
-        <rdfs:label xml:lang="en">RespitorySystem</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699 -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699">
         <rdfs:label xml:lang="en">BodyParts</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_85940378_eca6_4b29_b7f8_33a26eb7135a -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_85940378_eca6_4b29_b7f8_33a26eb7135a">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
-        <rdfs:label xml:lang="en">Brain</rdfs:label>
     </owl:Class>
     
 
@@ -427,6 +399,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_04ac84b6_dfac_406f_aa8e_1a7afb874982">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_3e1dff8a_5f94_4712_a2a3_3b7abca2e912"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_740b22b0_b42b_4792_a1f2_163fb4c1e13f"/>
         <rdfs:label xml:lang="en">Butter</rdfs:label>
     </owl:NamedIndividual>
     
@@ -445,6 +418,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_0c9d338b_2540_4378_913e_6bbdb294a8a5">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_6dff9ca2_d721_4b68_a7ca_5aaf3c2f635a"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_0ede3933_e26e_42c8_b7e7_4023ef725766"/>
         <rdfs:label xml:lang="en">FullGrains</rdfs:label>
     </owl:NamedIndividual>
     
@@ -471,8 +445,17 @@
     <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_1290da39_5f72_4820_a36d_c8d0bb78dccc -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_1290da39_5f72_4820_a36d_c8d0bb78dccc">
-        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_199e75d7_06e2_463f_8535_389ef54cf49f"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
         <rdfs:label xml:lang="en">Shoulder</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_1c9fd6c8_d19e_41f2_9d17_f1bf99fd31fa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_1c9fd6c8_d19e_41f2_9d17_f1bf99fd31fa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
+        <rdfs:label xml:lang="en">RespitorySystem</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -481,6 +464,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_1ddb2a3f_7cdf_4994_ac82_043cdfe76454">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_f01f8d20_5e85_49ad_bc5c_bbb29bba0b50"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_888ceaf9_e7b9_4195_a3bb_0794fa6beece"/>
         <rdfs:label xml:lang="en">Brocolli</rdfs:label>
     </owl:NamedIndividual>
     
@@ -490,6 +474,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_26df427e_823c_4cdb_8ea6_84cdb8dc6633">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_e7e14ec7_e2b8_468f_87a0_299a7c44be4f"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_4614327c_ef83_4829_92aa_44dc5d28b162"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_8fa554f9_68cc_4b92_8c96_0d91921be61a"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe"/>
         <rdfs:label xml:lang="en">Baseball</rdfs:label>
     </owl:NamedIndividual>
     
@@ -517,7 +504,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_3fbfcf72_34dc_4e33_bd54_f85417779c4f">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_6dff9ca2_d721_4b68_a7ca_5aaf3c2f635a"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_0ede3933_e26e_42c8_b7e7_4023ef725766"/>
         <rdfs:label xml:lang="en">FullFlour</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_407a18e8_6892_454e_9fc2_69fd5278fbdc -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_407a18e8_6892_454e_9fc2_69fd5278fbdc">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_f01f8d20_5e85_49ad_bc5c_bbb29bba0b50"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_371fbf1b_09f9_4b63_8868_fc7a9d6bc351"/>
+        <rdfs:label xml:lang="en">Spinach</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -525,7 +523,7 @@
     <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_4614327c_ef83_4829_92aa_44dc5d28b162 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_4614327c_ef83_4829_92aa_44dc5d28b162">
-        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_199e75d7_06e2_463f_8535_389ef54cf49f"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
         <rdfs:label xml:lang="en">Hip</rdfs:label>
     </owl:NamedIndividual>
     
@@ -544,7 +542,16 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_4c6bb25b_f7fd_4198_837f_3d1967f2cc9c">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_f01f8d20_5e85_49ad_bc5c_bbb29bba0b50"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_888ceaf9_e7b9_4195_a3bb_0794fa6beece"/>
         <rdfs:label xml:lang="en">Banana</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_51c753e1_98f7_4534_934c_b438cc521839 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_51c753e1_98f7_4534_934c_b438cc521839">
+        <rdfs:label xml:lang="en">Brain</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -553,6 +560,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_6cc85098_d91a_4af1_9242_06bbc1b09a79">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_e7e14ec7_e2b8_468f_87a0_299a7c44be4f"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f1bb8711_3be6_40b2_b790_0f0b0c789de2"/>
         <rdfs:label xml:lang="en">Rugby</rdfs:label>
     </owl:NamedIndividual>
     
@@ -571,6 +580,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_793dd6df_68f5_4072_9a03_2f681d6535c1">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_4378f406_dd62_44fe_890e_7cee59729017"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_c037cc87_c98c_4307_bfb2_98ff6ac1ae3e"/>
         <rdfs:label xml:lang="en">Chicken</rdfs:label>
     </owl:NamedIndividual>
     
@@ -589,6 +599,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_8574bd64_e9ae_490c_89a7_cdb3791288c2">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_e7e14ec7_e2b8_468f_87a0_299a7c44be4f"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f1bb8711_3be6_40b2_b790_0f0b0c789de2"/>
         <rdfs:label xml:lang="en">Running</rdfs:label>
     </owl:NamedIndividual>
     
@@ -615,7 +627,7 @@
     <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_8fa554f9_68cc_4b92_8c96_0d91921be61a -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_8fa554f9_68cc_4b92_8c96_0d91921be61a">
-        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_199e75d7_06e2_463f_8535_389ef54cf49f"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
         <rdfs:label xml:lang="en">Elbow</rdfs:label>
     </owl:NamedIndividual>
     
@@ -661,6 +673,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_ac84104c_7bbb_46ab_baba_cda190e0360c">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_e7e14ec7_e2b8_468f_87a0_299a7c44be4f"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_8fa554f9_68cc_4b92_8c96_0d91921be61a"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe"/>
         <rdfs:label xml:lang="en">Tennis</rdfs:label>
     </owl:NamedIndividual>
     
@@ -724,6 +738,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_caf76316_f307_4fcf_9e19_77fcb683f6a3">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_c6710ccb_de34_4545_94c1_08e300fe9cfa"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_740b22b0_b42b_4792_a1f2_163fb4c1e13f"/>
         <rdfs:label xml:lang="en">Milk</rdfs:label>
     </owl:NamedIndividual>
     
@@ -733,6 +748,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e0e340f7_c9e3_4b73_8f54_9f3e2ea01903">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_f01f8d20_5e85_49ad_bc5c_bbb29bba0b50"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_888ceaf9_e7b9_4195_a3bb_0794fa6beece"/>
         <rdfs:label xml:lang="en">Apple</rdfs:label>
     </owl:NamedIndividual>
     
@@ -742,7 +758,17 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e55a8443_b3a0_4294_80f8_996053f5bbaa">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_e7e14ec7_e2b8_468f_87a0_299a7c44be4f"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f1bb8711_3be6_40b2_b790_0f0b0c789de2"/>
         <rdfs:label xml:lang="en">Soccer</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e792e95a_a7f2_43cb_a17d_2e6f13d5ccfe">
+        <rdfs:label xml:lang="en">RespitorySystem</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -751,6 +777,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_e9333d67_529a_4c47_8504_e389226e8207">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_4378f406_dd62_44fe_890e_7cee59729017"/>
+        <OWLObjectProperty_71082032_148f_4f34_be7f_9d2de6560db6 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_c037cc87_c98c_4307_bfb2_98ff6ac1ae3e"/>
         <rdfs:label xml:lang="en">Hamburger</rdfs:label>
     </owl:NamedIndividual>
     
@@ -760,6 +787,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f17c75f8_1b34_454a_aa12_414ca11a5356">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_e7e14ec7_e2b8_468f_87a0_299a7c44be4f"/>
+        <OWLObjectProperty_3a421e4c_a6a1_4254_b4c7_4d820ba4e7e3 rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_51c753e1_98f7_4534_934c_b438cc521839"/>
         <rdfs:label xml:lang="en">Chess</rdfs:label>
     </owl:NamedIndividual>
     
@@ -768,7 +796,7 @@
     <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f1bb8711_3be6_40b2_b790_0f0b0c789de2 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f1bb8711_3be6_40b2_b790_0f0b0c789de2">
-        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_199e75d7_06e2_463f_8535_389ef54cf49f"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
         <rdfs:label xml:lang="en">Knee</rdfs:label>
     </owl:NamedIndividual>
     
@@ -797,6 +825,15 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f6b071ee_d786_465f_b741_983f7ee81a09">
         <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_6bd77916_e01c_4a97_8c87_196645b79efa"/>
         <rdfs:label xml:lang="en">Sandwich</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f85cba5e_c310_4d82_9903_b4ebe03ff322 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLNamedIndividual_f85cba5e_c310_4d82_9903_b4ebe03ff322">
+        <rdf:type rdf:resource="http://www.semanticweb.org/rivka/ontologies/2022/8/untitled-ontology-12#OWLClass_7acd8b8c_b39a_42c3_8b71_f27ce9911699"/>
+        <rdfs:label xml:lang="en">Brain</rdfs:label>
     </owl:NamedIndividual>
 </rdf:RDF>
 
