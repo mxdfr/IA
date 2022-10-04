@@ -52,15 +52,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LocatedIn -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LocatedIn">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#BodyArea"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#canPrevent -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#canPrevent">
@@ -140,6 +131,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#hurt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#hurt">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#PossiblyHurtingSport"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Joint"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#ifPermanentThenCauses -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#ifPermanentThenCauses">
@@ -150,11 +150,30 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isA -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isA">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Sport"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Sport"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isDefinedBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isDefinedBy">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#NutritionState"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Nutrient"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isUsedIn -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isUsedIn">
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#usesBodyPart"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Sport"/>
     </owl:ObjectProperty>
     
 
@@ -228,12 +247,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Active">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Sport"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#usesBodyPart"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Respiratory_system"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -246,9 +259,11 @@
     
 
 
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#BodyArea -->
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Allergy -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#BodyArea"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Allergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Condition"/>
+    </owl:Class>
     
 
 
@@ -390,6 +405,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Head -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Head">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#HealthState -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#HealthState"/>
@@ -422,6 +445,20 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Junk_food">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Meal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBodyPart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBodyPart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isUsedIn"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Running"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -522,6 +559,43 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#PossiblyHurtJoint -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#PossiblyHurtJoint">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Joint"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#isUsedIn"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Active"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#PossiblyHurtingSport -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#PossiblyHurtingSport">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Active"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Sport"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#usesBodyPart"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Joint"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Protein -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Protein">
@@ -588,6 +662,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#UpperBodyPart -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#UpperBodyPart">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Vegetable -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Vegetable">
@@ -645,6 +727,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Ankle">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Joint"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBodyPart"/>
     </owl:NamedIndividual>
     
 
@@ -1029,6 +1112,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Knee">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Joint"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBodyPart"/>
     </owl:NamedIndividual>
     
 
@@ -1081,9 +1165,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBody -->
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Lowerbody -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBody"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Lowerbody"/>
     
 
 
@@ -1234,13 +1318,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#usesBodyPart"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Knee"/>
-            </owl:Restriction>
-        </rdf:type>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#usesBodyPart"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Leg_muscles"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#LowerBodyPart"/>
             </owl:Restriction>
         </rdf:type>
     </owl:NamedIndividual>
@@ -1335,14 +1413,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Torso -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Torso">
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#BodyArea"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Tuna_Sandwich -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Tuna_Sandwich">
@@ -1354,6 +1424,12 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#UpperBody -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#UpperBody"/>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Upperbody -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Upperbody"/>
     
 
 
@@ -1419,6 +1495,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#glutenAllergy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#glutenAllergy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Allergy"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#highFat -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#highFat">
@@ -1455,6 +1539,14 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#highVitamin">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Vitamin"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#lactoseIntolerance -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#lactoseIntolerance">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Allergy"/>
     </owl:NamedIndividual>
     
 
@@ -1519,6 +1611,14 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#obesity">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Condition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#peanutAllergy -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#peanutAllergy">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Allergy"/>
     </owl:NamedIndividual>
     
 
