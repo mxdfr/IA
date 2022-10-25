@@ -6,10 +6,9 @@ warnings.filterwarnings("ignore")
 
 class Agent:
 
-    def __init__(self, path="onto_pizza.owl"):
+    def __init__(self, path="D:\IA\IA\Example agent\ontology.owl"):
         # Load the desired ontology using the path file
-        self.ontology = get_ontology(path)
-        self.ontology.load()
+        self.ontology = get_ontology(path).load()
 
         # Run the reasoner to obtain the inferences
         with self.ontology:

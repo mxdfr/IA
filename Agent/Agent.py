@@ -1,5 +1,5 @@
 import time
-
+import pandas as pd
 
 class Agent:
     ontology_atoms_memory = set([])
@@ -8,7 +8,10 @@ class Agent:
     tweets_properties_memory = set([])
     awaiting_stories = []
 
-    def __int__(self):
+    def __init__(self, ontology, tweets):
+
+        self.ontology_source = ontology
+        self.tweets_source = tweets
 
         self.update_ontology_atoms_memory()
         self.update_tweets_atoms_memory()
@@ -113,3 +116,47 @@ class Agent:
         """
         return 0, False
 
+    def update_ontology_atoms_memory(self):
+        # Update the ontology atoms memory
+
+        pass
+
+    def update_ontology_properties_memory(self):
+        # Update the ontology properties memory
+
+        pass
+
+    def update_awaiting_stories(self):
+        # Update the stories in the queue
+
+        pass
+
+    def update_tweets_atoms_memory(self):
+        # Update the tweets atoms memory
+
+        # open the csv file with tweets:
+        tweets_opened = pd.read_excel(self.tweets_source)
+        # get the atoms from the tweets:
+        tweets_atoms = list(tweets_opened['predecessor atom'].unique()) + list(tweets_opened['successor atom'].unique())
+        #tweets_atoms.append(tweets_opened['successor atom'].unique())
+        # add them to the memory:
+        self.tweets_atoms_memory = self.tweets_atoms_memory.union(tweets_atoms)
+        print(self.tweets_atoms_memory)
+
+    def update_tweets_properties_memory(self):
+        # Update the tweets properties memory
+
+        # open the csv file with tweets:
+        tweets_opened = pd.read_excel(self.tweets_source)
+        # get the properties from the tweets:
+        tweets_properties = list(tweets_opened['relation'].unique())
+        # add them to the memory:
+        self.tweets_properties_memory = self.tweets_properties_memory.union(tweets_properties)
+        print(self.tweets_properties_memory)
+
+if __name__ == "__main__":
+    # Run the agent
+    agent = Agent(ontology = "./ontology.csv", tweets = "./tweet_db.xlsx")
+
+
+    pass
