@@ -106,7 +106,18 @@ class Agent:
             -> (float, bool):
         """
         Check if the property is true between the two objects, in the given ontology
+        ontology_type=1 is ontology, ontology_type=-1 is tweets
         """
+
+        if ontology_type == 1:
+            # ontology
+            pass
+        elif ontology_type == -1:
+            # tweets
+
+            pass
+
+
         return 0, False
 
     def get_consequents(self, object1, property, ontology_type=1, neg=False) \
