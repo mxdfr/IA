@@ -1,7 +1,16 @@
 import time
+from xml.etree.ElementInclude import default_loader
 import pandas as pd
+import flask
+import werkzeug.serving
+from owlready2 import *
+from owlready2.sparql.endpoint import *
+
+# Ignore useless warnings
+warnings.filterwarnings("ignore")
 
 class Agent:
+    PROT_SCORE = 1
     ontology_atoms_memory = set([])
     tweets_atoms_memory = set([])
     ontology_properties_memory = set([])
@@ -13,14 +22,41 @@ class Agent:
         self.ontology_source = ontology
         self.tweets_source = tweets
 
+        self.ontology = self.open_ontology(ontology)
+
         self.update_ontology_atoms_memory()
         self.update_tweets_atoms_memory()
         self.update_ontology_properties_memory()
         self.update_tweets_properties_memory()
 
+        self.test_functions()
+
         self.start()
 
         pass
+
+    def test_functions(self):
+        print("CONSEQUENTS")
+        print(self.get_consequents(self.ontology.Running, "usesBodyPart"))
+        print("CHECK PROPERTY")
+        print(self.check_property(self.ontology.Running, "usesBodyPart", self.ontology.Knee))
+
+
+    def open_ontology(self, ontology):
+        # Load the desired ontology using the path file
+        Ontology = get_ontology(ontology).load()
+
+        # Run the reasoner to obtain the inferences
+        with Ontology:
+            sync_reasoner(infer_property_values=True)
+
+        # app = flask.Flask("Owlready_sparql_endpoint")
+        # endpoint = EndPoint(default_world)
+        # app.route("/sparql", methods = ["GET"])(endpoint)
+
+        # werkzeug.serving.run_simple("localhost", 5000, app)
+
+        return Ontology
 
     def start(self):
         # Start the agent
@@ -102,30 +138,59 @@ class Agent:
 
         return "", "", ""
 
-    def check_property(self, object1, property, object2, ontology_type=1, neg=False)\
-            -> (float, bool):
+    def check_property(self, object1, property, object2, ontology_type=1, neg=False):
         """
         Check if the property is true between the two objects, in the given ontology
         ontology_type=1 is ontology, ontology_type=-1 is tweets
+        
+        For now it returns the score of the statement
+        If they are not related then it returns 0
         """
 
-        if ontology_type == 1:
-            # ontology
-            pass
-        elif ontology_type == -1:
-            # tweets
+        prop_to_check = self.ontology_properties_memory if ontology_type == 1 else self.tweets_properties_memory
 
-            pass
-
+        scores, relations = self.get_consequents(object1, property, ontology_type)
+        for rel in enumerate(relations):
+            if object2 in rel[1]:
+                return scores[rel[0]], True
 
         return 0, False
 
-    def get_consequents(self, object1, property, ontology_type=1, neg=False) \
-            -> (float, bool):
+
+    # def get_classes_instances(self, superClass):
+    #     """
+    #     Return all the subclasses with their instances
+    #     """
+    #     classes_and_instances = [superClass] + superClass.instances()
+    #     print(classes_and_instances)
+    #     for Class in superClass.subclasses():
+    #         subclasses = self.get_classes_instances(Class)
+    #         # classes_and_instances += classes_and_instances + subclasses
+
+    #     return classes_and_instances
+
+
+    def get_consequents(self, object1, property, ontology_type=1, neg=False):
         """
+        Object1 should be an owl object and property a string/label
         Check for all possible consequents of applying the property on the object1
         """
-        return 0, False
+
+        consequents = []
+        statement_scores = []
+        if ontology_type == 1:
+            consequents = list(default_world.sparql("""
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#>
+                                SELECT ?cons
+                                { ?? table:""" + property + """ ?cons }
+                            """, [object1]))
+
+            statement_scores = [self.PROT_SCORE] * len(consequents)
+        else:
+            # extract consequents from mock_tweets_db
+            pass
+
+        return statement_scores, consequents
 
     def update_ontology_atoms_memory(self):
         # Update the ontology atoms memory
@@ -167,6 +232,6 @@ class Agent:
 
 if __name__ == "__main__":
     # Run the agent
-    agent = Agent(ontology="./ontology.csv", tweets="./tweet_db.xlsx")
+    agent = Agent(ontology="../ontology24okt.owl", tweets="./tweet_db.xlsx")
 
     pass
