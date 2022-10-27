@@ -1,3 +1,4 @@
+import os
 import time
 from xml.etree.ElementInclude import default_loader
 import pandas as pd
@@ -17,7 +18,7 @@ class Agent:
     tweets_properties_memory = set([])
     awaiting_stories = {}
 
-    def __init__(self, ontology, tweets):
+    def __init__(self, ontology, tweets, folder_name):
 
         self.ontology_source = ontology
         self.tweets_source = tweets
@@ -31,13 +32,11 @@ class Agent:
 
         self.test_functions()
 
-        self.start()
-
-        pass
+        self.start(folder_name)
 
     def test_functions(self):
         print("CONSEQUENTS")
-        print(self.get_consequents(self.ontology.Running, "usesBodyPart"))
+        print(self.get_consequents(self.ontology.Running, "not isBadFor", -1))
         print("CHECK PROPERTY")
         print(self.check_property(self.ontology.Running, "usesBodyPart", self.ontology.Knee))
 
@@ -50,18 +49,12 @@ class Agent:
         with Ontology:
             sync_reasoner(infer_property_values=True)
 
-        # app = flask.Flask("Owlready_sparql_endpoint")
-        # endpoint = EndPoint(default_world)
-        # app.route("/sparql", methods = ["GET"])(endpoint)
-
-        # werkzeug.serving.run_simple("localhost", 5000, app)
-
         return Ontology
 
-    def start(self):
+    def start(self, folder_name):
         # Start the agent
         # Look for stories in queue:
-        self.update_awaiting_stories()
+        self.update_awaiting_stories(folder_name)
 
         # If there are stories, process them
         if len(self.awaiting_stories) > 0:
@@ -72,10 +65,19 @@ class Agent:
 
 
     
-    def update_awaiting_stories():
+    def update_awaiting_stories(self, folder_name):
         """
         Check for new txt files in stories folder and update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range)}
         """
+
+        if os.path.isdir(folder_name):
+            if not os.listdir(folder_name):
+                print("Directory is empty")
+            else:    
+                print("Directory is not empty")
+        else:
+            print("Given directory doesn't exist")
+            exit()
         pass
 
     def process_stories(self):
@@ -84,7 +86,21 @@ class Agent:
             self.process_story(story)
             self.awaiting_stories.remove(story)
 
+    def classify_statements(statements, property):
+        return [], []
+
     def process_story(self, story):
+        """
+        If you cant find P->Q directly then extract all P's relations (with all its properties), classify them
+        We only care to classify P's properties
+
+        The loop should be: while the sources can bounce off eachother
+        e.g. P causes obesity (causes = enhances ++)
+
+             Problem
+             P contains highSugar (contains = increases --)
+             P contains lowSugar (contains = decreases --)
+        """
         # Process the story
         (object1, property, object2) = self.extract_query(story)
         # Check if the atoms are in the ontology:
@@ -103,39 +119,34 @@ class Agent:
 
         story_confirmed_by = []
         story_denied_by = []
+        story_true = False
         for kb in knowledge_base:
             if object1 in knowledge_base[kb] and object2 in knowledge_base[kb]:
-                # If the property is in the ontology, check if the property is true
-                evidence, found = self.check_property(object1, property, object2, ontology_type=kb)
-                evidence_neg, found_neg = self.check_property(object1, property, object2, ontology_type=kb, neg=True)
-                if found:
-                    story_confirmed_by.append(evidence)
-                elif found_neg:
-                    story_denied_by.append(evidence_neg)
+                # If the property is in the ontology, check which statements possitively/negatively influence the range
+                scores, statements = self.check_property(object1, property, object2, ontology_type=kb)
+                if statements:
+                    story_confirmed_by, story_denied_by = self.classify_statements(statements, property)
 
             elif object1 in knowledge_base[kb] and object2 in knowledge_base[-1 * kb]:
                 # If the objects are in two different ontologies, try to make a joint inference
                 print("I don't know, but I'll ask my friends!")
-                # look for all consequents of applying the property on the object 1
-                partial_evidence, consequents = self.get_consequents(object1, property, ontology_type=kb)
+                # look for all consequents with every property that is linked to object 1
+                scores, consequents = self.get_consequents(object1, property, ontology_type=kb)
+
+                if consequents:
+                    story_confirmed_by, story_denied_by = self.classify_statements(consequents, property)
 
                 # loop over them and check if they are in the other knowledge base:
                 for c in consequents:
                     # if yes, check if there is a connection between the consequent and the object 2
                     if c in knowledge_base[-1 * kb]:
-                        evidence, found = self.check_property(object1, property, object2, ontology_type=kb)
-                        if found:
-                            story_confirmed_by.append(partial_evidence + evidence)
+                        scores, statements = self.check_property(c, property, object2, ontology_type=kb)
+                        if statements:
+                            story_true = True
+                            story_confirmed, story_denied = self.classify_statements(consequents, property)
+                            story_confirmed_by += story_confirmed
+                            story_denied_by += story_denied
 
-                partial_neg_evidence, neg_consequents = self.get_consequents(object1, property, ontology_type=kb, neg=True)
-
-                # loop over them and check if they are in the other knowledge base:
-                for c in neg_consequents:
-                    # if yes, check if there is a connection between the consequent and the object 2
-                    if c in knowledge_base[-1 * kb]:
-                        neg_evidence, neg_found = self.check_property(object1, property, object2, ontology_type=kb, neg=True)
-                        if neg_found:
-                            story_confirmed_by.append(partial_neg_evidence + neg_evidence)
 
     def extract_query(self, story):
         """
@@ -145,7 +156,7 @@ class Agent:
 
         return self.awaiting_stories[story]
 
-    def check_property(self, object1, property, object2, ontology_type=1, neg=False):
+    def check_property(self, object1, property, object2, ontology_type=1):
         """
         Check if the property is true between the two objects, in the given ontology
         ontology_type=1 is ontology, ontology_type=-1 is tweets
@@ -159,9 +170,9 @@ class Agent:
         scores, relations = self.get_consequents(object1, property, ontology_type)
         for rel in enumerate(relations):
             if object2 in rel[1]:
-                return scores[rel[0]], True
+                return [scores[rel[0]]], [relations[rel[0]]]
 
-        return 0, False
+        return [0], []
 
 
     # def get_classes_instances(self, superClass):
@@ -177,7 +188,7 @@ class Agent:
     #     return classes_and_instances
 
 
-    def get_consequents(self, object1, property, ontology_type=1, neg=False):
+    def get_consequents(self, object1, property, ontology_type=1):
         """
         Object1 should be an owl object and property a string/label
         Check for all possible consequents of applying the property on the object1
@@ -195,7 +206,21 @@ class Agent:
             statement_scores = [self.PROT_SCORE] * len(consequents)
         else:
             # extract consequents from mock_tweets_db
-            pass
+            tweets_opened = pd.read_excel(self.tweets_source)
+
+            domains = []
+            for antec in tweets_opened["predecessor atom"]:
+                domains.append(antec.split(", "))
+
+            ranges = []
+            for cons in tweets_opened["successor atom"]:
+                ranges.append(cons.split(", "))
+
+            for range in enumerate(list(tweets_opened['relation'])):
+                if range[1] == property and str(object1.label[0]).lower() in domains[range[0]]:
+                    # calc trustworthyness
+                    statement_scores.append(0)
+                    consequents += ranges[range[0]]
 
         return statement_scores, consequents
 
@@ -203,6 +228,7 @@ class Agent:
         # Update the ontology atoms memory
         """
         Get all the classes and the instances from the ontology
+        Returns a list
         """
 
         pass
@@ -211,6 +237,7 @@ class Agent:
         # Update the ontology properties memory
         """
         Get all the object properties from the ontology
+        Returns a dictionary with the properties as the key and their type of class as the value
         """
 
         pass
@@ -240,6 +267,6 @@ class Agent:
 
 if __name__ == "__main__":
     # Run the agent
-    agent = Agent(ontology="../24oktober.owl", tweets="./tweet_db.xlsx")
+    agent = Agent(ontology="../24oktober.owl", tweets="./tweet_db.xlsx", folder_name="./Stories")
 
     pass
