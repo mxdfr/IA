@@ -241,7 +241,9 @@
 
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#Body_part">
+        <rdfs:label>Body_part</rdfs:label>
+    </owl:Class>
     
 
 

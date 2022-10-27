@@ -15,7 +15,7 @@ class Agent:
     tweets_atoms_memory = set([])
     ontology_properties_memory = set([])
     tweets_properties_memory = set([])
-    awaiting_stories = []
+    awaiting_stories = {}
 
     def __init__(self, ontology, tweets):
 
@@ -70,6 +70,14 @@ class Agent:
             time.sleep(25)
             self.start()
 
+
+    
+    def update_awaiting_stories():
+        """
+        Check for new txt files in stories folder and update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range)}
+        """
+        pass
+
     def process_stories(self):
         # Process all the stories in the queue
         for story in self.awaiting_stories:
@@ -80,7 +88,7 @@ class Agent:
         # Process the story
         (object1, property, object2) = self.extract_query(story)
         # Check if the atoms are in the ontology:
-        if property[0] not in self.ontology_properties_memory.union(self.tweets_properties_memory):
+        if property not in self.ontology_properties_memory.union(self.tweets_properties_memory):
             print("Sorry, I don't know this property!")
             return
         if object1 not in self.ontology_atoms_memory.union(self.tweets_atoms_memory):
@@ -90,7 +98,6 @@ class Agent:
             print(f"Sorry, I don't know this object: {object2}!")
             return
 
-        property = property[1]
         # If both atoms are in the ontology, check if the property is in the ontology
         knowledge_base = {1: self.ontology_atoms_memory, -1: self.tweets_atoms_memory}
 
@@ -136,7 +143,7 @@ class Agent:
         """
         # assumption: property is a tuple (A, B) where A is the exact property and B is the class of properties in ontologies
 
-        return "", "", ""
+        return self.awaiting_stories[story]
 
     def check_property(self, object1, property, object2, ontology_type=1, neg=False):
         """
@@ -180,7 +187,7 @@ class Agent:
         statement_scores = []
         if ontology_type == 1:
             consequents = list(default_world.sparql("""
-                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#>
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
                                 SELECT ?cons
                                 { ?? table:""" + property + """ ?cons }
                             """, [object1]))
@@ -194,16 +201,17 @@ class Agent:
 
     def update_ontology_atoms_memory(self):
         # Update the ontology atoms memory
+        """
+        Get all the classes and the instances from the ontology
+        """
 
         pass
 
     def update_ontology_properties_memory(self):
         # Update the ontology properties memory
-
-        pass
-
-    def update_awaiting_stories(self):
-        # Update the stories in the queue
+        """
+        Get all the object properties from the ontology
+        """
 
         pass
 
@@ -232,6 +240,6 @@ class Agent:
 
 if __name__ == "__main__":
     # Run the agent
-    agent = Agent(ontology="../ontology24okt.owl", tweets="./tweet_db.xlsx")
+    agent = Agent(ontology="../24oktober.owl", tweets="./tweet_db.xlsx")
 
     pass
