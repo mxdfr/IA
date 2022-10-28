@@ -58,7 +58,9 @@ class Agent:
 
         # If there are stories, process them
         if len(self.awaiting_stories) > 0:
+            # returns a list of tuples [(class, score)]
             self.process_stories()
+            # Call the util function
         else:
             time.sleep(25)
             self.start()
