@@ -92,6 +92,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#improveBy -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#improveBy">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Muscles"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">improveBy</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isNear -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isNear">
@@ -689,6 +700,12 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Snacks">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Additional"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Snacks</rdfs:label>
     </owl:Class>
     
@@ -868,6 +885,8 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Arm_muscles">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Muscles"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UpperBodyPart"/>
+        <okt:improveBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Rugby"/>
+        <okt:improveBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Swimming"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Arm_mucles</rdfs:label>
     </owl:NamedIndividual>
     
@@ -1366,6 +1385,9 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Leg_muscles">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#LowerBodyPart"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Muscles"/>
+        <okt:improveBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Rugby"/>
+        <okt:improveBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Running"/>
+        <okt:improveBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Swimming"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Leg_muscles</rdfs:label>
     </owl:NamedIndividual>
     
@@ -1519,7 +1541,6 @@
                 <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highSugars"/>
             </owl:Restriction>
         </rdf:type>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pizza</rdfs:label>
     </owl:NamedIndividual>
     
 
