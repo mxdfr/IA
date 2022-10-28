@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff#"
      xml:base="http://www.semanticweb.org/weron/ontologies/2022/8/food_and_stuff"
+     xmlns:okt="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -23,12 +24,25 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Nutrient"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">CausesNutrientState</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Contains -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Contains">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Food"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Contains</rdfs:label>
     </owl:ObjectProperty>
     
@@ -37,8 +51,8 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesCondition -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesCondition">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Condition"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">causesCondition</rdfs:label>
     </owl:ObjectProperty>
     
@@ -49,6 +63,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasARecipe">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasARecipe</rdfs:label>
     </owl:ObjectProperty>
     
@@ -59,6 +74,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Food_item"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasFoodItem</rdfs:label>
     </owl:ObjectProperty>
     
@@ -67,19 +83,11 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasNutrient -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasNutrient">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Food_item"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Nutrient"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasNutrient</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isDefinedBy -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isDefinedBy">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Nutrient"/>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isDefinedBy</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -90,6 +98,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">neutral</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isNear</rdfs:label>
     </owl:ObjectProperty>
     
@@ -101,6 +110,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ReflexiveProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">neutral</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isSimilarTo</rdfs:label>
     </owl:ObjectProperty>
     
@@ -112,6 +122,7 @@
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#showsBy"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Symptoms"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthState"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label>isSymptomOf</rdfs:label>
     </owl:ObjectProperty>
     
@@ -123,6 +134,7 @@
         <owl:inverseOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#usesBodyPart"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">isUsedIn</rdfs:label>
     </owl:ObjectProperty>
     
@@ -131,8 +143,10 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#preventsCondition -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#preventsCondition">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#ConditionPreventingFactors"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Condition"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decreases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">preventsCondition</rdfs:label>
     </owl:ObjectProperty>
     
@@ -143,6 +157,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#showsBy">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthState"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Symptoms"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">showsBy</rdfs:label>
     </owl:ObjectProperty>
     
@@ -164,6 +179,7 @@
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#sportAffectsHealth"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#PossiblyHurtingSport"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Injury"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sportCausesInjury</rdfs:label>
     </owl:ObjectProperty>
     
@@ -175,6 +191,7 @@
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#sportAffectsHealth"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#PreventsMentalDiseases"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Disease"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">decreases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">sportsPreventsDisease</rdfs:label>
     </owl:ObjectProperty>
     
@@ -185,6 +202,7 @@
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#usesBodyPart">
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">usesBodyPart</rdfs:label>
     </owl:ObjectProperty>
     
@@ -257,34 +275,6 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#ConditionPreventingFactors -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#ConditionPreventingFactors">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Food"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasNutrient"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#usesBodyPart"/>
-                                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Immune_system"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#usesBodyPart"/>
-                                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Respiratory_system"/>
-                            </owl:Restriction>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:unionOf>
-            </owl:Class>
-        </owl:equivalentClass>
         <rdfs:label rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#ConditionPreventingFactors"/>
     </owl:Class>
     
@@ -334,6 +324,15 @@
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fever">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Symptoms"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fever</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fiber -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fiber">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Nutrient"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fiber</rdfs:label>
     </owl:Class>
     
 
@@ -433,15 +432,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthState">
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HealthState</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HealthyNutritionState</rdfs:label>
     </owl:Class>
     
 
@@ -653,37 +643,6 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#PossiblyUnhealthyMeal -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#PossiblyUnhealthyMeal">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Food"/>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasNutrient"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem"/>
-                                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Flour"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem"/>
-                                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Oil"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem"/>
-                                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Salt"/>
-                            </owl:Restriction>
-                            <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem"/>
-                                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sugar"/>
-                            </owl:Restriction>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PossiblyUnhealthyMeal</rdfs:label>
     </owl:Class>
@@ -783,15 +742,6 @@
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#System">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">System</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnhealthyNutritionState</rdfs:label>
     </owl:Class>
     
 
@@ -1301,6 +1251,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
+        <okt:preventsCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+        <okt:preventsCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+        <okt:preventsCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#proteinDeficiency"/>
+        <okt:preventsCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#vitaminDeficiency"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Heart -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Heart">
@@ -1314,6 +1276,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HighCarbohydrates">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Carbohydrates"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">HighCarbohydrates</rdfs:label>
     </owl:NamedIndividual>
     
@@ -1439,6 +1402,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#LowCarbohydrates">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Carbohydrates"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LowCarbohydrates</rdfs:label>
     </owl:NamedIndividual>
     
@@ -1888,6 +1852,19 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
+        <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#cancer"/>
+        <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+        <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#flu"/>
+        <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">UnhealthyNutritionState</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UpperBody -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UpperBody">
@@ -1983,8 +1960,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highFat">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fat"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highFat</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highFiber -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highFiber">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fiber"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highFiber</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1993,6 +1980,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highProtein">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Protein"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highProtein</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2002,7 +1990,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highSodium">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sodium"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highSodium</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2012,7 +2000,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highSugars">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sugars"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highSugars</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2021,8 +2009,8 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highVitamin -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highVitamin">
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Vitamin"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highVitamin</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2050,7 +2038,18 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowFat">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fat"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lowFat</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowFiber -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowFiber">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fiber"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lowFiber</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -2059,7 +2058,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowProtein">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Protein"/>
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
+        <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#proteinDeficiency"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lowProtein</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2069,6 +2069,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowSodium">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sodium"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lowSodium</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2078,6 +2079,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowSugars">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sugars"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lowSugars</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2086,8 +2088,9 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowVitamin -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowVitamin">
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnHealthyNutritionState"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Vitamin"/>
+        <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
+        <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#vitaminDeficiency"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">lowVitamin</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2166,40 +2169,19 @@
 
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooLittleProtein -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooLittleProtein">
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isDefinedBy"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lowProtein"/>
-            </owl:Restriction>
-        </rdf:type>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooLittleProtein"/>
     
 
 
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooMuchFat -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooMuchFat">
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isDefinedBy"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highFat"/>
-            </owl:Restriction>
-        </rdf:type>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooMuchFat"/>
     
 
 
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooMuchSugar -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooMuchSugar">
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#isDefinedBy"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highSugars"/>
-            </owl:Restriction>
-        </rdf:type>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#tooMuchSugar"/>
     
 
 
@@ -2215,7 +2197,6 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#wellBalanced -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#wellBalanced">
-        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">wellBalanced</rdfs:label>
     </owl:NamedIndividual>
     
