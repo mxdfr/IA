@@ -67,6 +67,7 @@ class Agent:
     
     def update_awaiting_stories(self, folder_name):
         """
+        Veronika
         Check for new txt files in stories folder and update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range)}
         """
 
@@ -96,10 +97,6 @@ class Agent:
 
         The loop should be: while the sources can bounce off eachother
         e.g. P causes obesity (causes = enhances ++)
-
-             Problem
-             P contains highSugar (contains = increases --)
-             P contains lowSugar (contains = decreases --)
         """
         # Process the story
         (object1, property, object2) = self.extract_query(story)
@@ -227,6 +224,7 @@ class Agent:
     def update_ontology_atoms_memory(self):
         # Update the ontology atoms memory
         """
+        Hiba
         Get all the classes and the instances from the ontology
         Returns a list
         """
@@ -236,6 +234,7 @@ class Agent:
     def update_ontology_properties_memory(self):
         # Update the ontology properties memory
         """
+        Hiba
         Get all the object properties from the ontology
         Returns a dictionary with the properties as the key and their type of class as the value
         """
