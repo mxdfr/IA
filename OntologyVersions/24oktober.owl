@@ -1522,12 +1522,6 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Flour">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Grains"/>
-        <rdf:type>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem"/>
-                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Flour"/>
-            </owl:Restriction>
-        </rdf:type>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Flour</rdfs:label>
     </owl:NamedIndividual>
     
