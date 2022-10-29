@@ -231,6 +231,14 @@ class Agent:
         Returns a list
         """
 
+        # Add ontology classes to the memory
+        self.ontology_atoms_memory = self.ontology_atoms_memory.union(self.ontology.classes())
+        # For each class, add its instances to the memory
+        for concept in self.ontology_atoms_memory:
+            self.ontology_atoms_memory = self.ontology_atoms_memory.union(self.ontology.get_instances_of(concept))
+
+        print(self.ontology_atoms_memory)
+
         pass
 
     def update_ontology_properties_memory(self):
@@ -240,6 +248,9 @@ class Agent:
         Get all the object properties from the ontology
         Returns a dictionary with the properties as the key and their type of class as the value
         """
+        # Add ontology properties to the memory
+        self.ontology_properties_memory = self.ontology_properties_memory.union(self.ontology.properties())
+        print(self.ontology_properties_memory)
 
         pass
 
@@ -268,6 +279,6 @@ class Agent:
 
 if __name__ == "__main__":
     # Run the agent
-    agent = Agent(ontology="../24oktober.owl", tweets="./tweet_db.xlsx", folder_name="./Stories")
+    agent = Agent(ontology="../OntologyVersions/24oktober.owl", tweets="./tweet_db.xlsx", folder_name="./Stories")
 
     pass
