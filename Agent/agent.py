@@ -60,7 +60,7 @@ class Agent:
         if len(self.awaiting_stories) > 0:
             # returns a list of tuples [(class, score)]
             self.process_stories()
-            # Call the util function
+            # utility_function(scores_true, scores_false)
         else:
             time.sleep(25)
             self.start()
@@ -276,6 +276,16 @@ class Agent:
         # add them to the memory:
         self.tweets_properties_memory = self.tweets_properties_memory.union(tweets_properties)
         print(self.tweets_properties_memory)
+
+    def utility_function(self, true_statement_scores, false_statement_scores):
+        """
+        Function for calculating utility
+        :param true_statement_scores: list of trustworthiness scores for statements that make the story true
+        :param false_statement_scores: list of trustworthiness scores for statements that make the story false
+        :return: difference between the two total trustworthiness scores
+        """
+        # if < 0: story = false, else: story = true
+        return sum(true_statement_scores) - sum(false_statement_scores)
 
 if __name__ == "__main__":
     # Run the agent
