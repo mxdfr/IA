@@ -147,7 +147,7 @@ class Agent:
             while domains:
                 print("Domain ", domains[0])
                 onto_scores, onto_properties = self.get_relations(domains[0], ontology_type=kb)
-                tweet_scores, tweet_properties = [], []#self.get_relations(domains[0], ontology_type=-1 * kb)
+                tweet_scores, tweet_properties = self.get_relations(domains[0], ontology_type=-1 * kb)
                 properties = onto_properties + tweet_properties
                 scores = onto_scores + tweet_scores
                 if properties:
@@ -252,12 +252,15 @@ class Agent:
             for antec in tweets_opened["predecessor atom"]:
                 domains.append(antec.split(", "))
 
-            print("Dwadwadawd", tweets_opened['relation'])
             for prop in enumerate(list(tweets_opened['relation'])):
-                if str(object1.label[0]).lower() in domains[prop[0]]:
+                if isinstance(object1, str):
+                    label = object1
+                else:
+                    label = object1.label[0]
+
+                if str(label).lower() in domains[prop[0]]:
                     # calc trustworthyness
                     statement_scores.append(0)
-                    print("kill me ", prop[1])
                     consequents.append(prop[1]) # +prop
 
         return statement_scores, consequents
@@ -292,10 +295,14 @@ class Agent:
                 ranges.append(cons.split(", "))
 
             for range in enumerate(list(tweets_opened['relation'])):
-                if range[1] == property and str(object1.label[0]).lower() in domains[range[0]]:
+                if isinstance(object1, str):
+                    label = object1
+                else:
+                    label = object1.label[0]
+                if range[1] == property and str(label).lower() in domains[range[0]]:
                     # calc trustworthyness
                     statement_scores.append(0)
-                    consequents += ranges[range[0]]
+                    consequents += [ranges[range[0]]]
 
         return statement_scores, consequents
 
