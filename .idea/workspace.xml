@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e2b6be8-c03f-46cf-b901-50c13272693a" name="Changes" comment="tweets updated!">
-      <change beforePath="$PROJECT_DIR$/Agent/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/Agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Crawler/spider.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Example agent/agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Example agent/ontology.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exampleagent/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exampleagent/agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exampleagent/onto_pizza.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exampleagent/run_script.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IA with labels 17okt.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IntellegentAgent 8okt.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IntellegentAgent.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ontology_Version5okt_Rivka.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rivka version 2.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ontologyRivka IA project.owl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tweets-retriever" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

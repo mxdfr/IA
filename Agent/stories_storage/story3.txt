@@ -1,0 +1,4 @@
+Story: Troy has been playing tennis regularly for the past three years. Recently, he has started to experience extreme pain in his elbow. He is wondering if this could be caused by playing tennis. He asks his agent to tell him if this could be the case based on reliable evidence.
+Domain:Tennis
+Property:causes
+Range:elbow pain

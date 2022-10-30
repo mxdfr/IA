@@ -24,6 +24,7 @@ class Agent:
         self.ontology_source = ontology
         self.tweets_source = tweets
 
+
         self.ontology = self.open_ontology(ontology)
 
         self.update_ontology_atoms_memory()
@@ -33,7 +34,8 @@ class Agent:
 
         self.test_functions()
 
-        self.start(folder_name)
+        self.stories_folder_name = folder_name
+        self.start()
 
     def test_functions(self):
         print("CONSEQUENTS")
@@ -55,10 +57,11 @@ class Agent:
 
         return Ontology
 
-    def start(self, folder_name):
+    def start(self):
         # Start the agent
         # Look for stories in queue:
-        self.update_awaiting_stories(folder_name)
+        self.update_awaiting_stories()
+
 
         # If there are stories, process them
         if len(self.awaiting_stories) > 0:
@@ -69,19 +72,32 @@ class Agent:
             time.sleep(25)
             self.start()
 
-
+        time.sleep(25)
+        self.start()
     
-    def update_awaiting_stories(self, folder_name):
+    def update_awaiting_stories(self):
         """
         Veronika
-        Check for new txt files in stories folder and update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range)}
+        Check for new txt files in stories folder and update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range, story name)}
         """
 
-        if os.path.isdir(folder_name):
-            if not os.listdir(folder_name):
+        if os.path.isdir(self.stories_folder_name):
+            if not os.listdir(self.stories_folder_name):
                 print("Directory is empty")
-            else:    
-                print("Directory is not empty")
+            else:
+                stories = os.listdir(self.stories_folder_name)
+                for story in stories:
+                    with open(self.stories_folder_name + "/"+ story, "r") as f:
+                        story_content = f.read()
+                        for line in story_content.splitlines():
+                            if line.startswith("Domain:"):
+                                domain = line.split(":")[1]
+                            elif line.startswith("Property:"):
+                                property = line.split(":")[1]
+                            elif line.startswith("Range:"):
+                                range = line.split(":")[1]
+                        self.awaiting_stories[story] = (domain, property, range, story)
+                    os.remove(self.stories_folder_name +'/'+story)
         else:
             print("Given directory doesn't exist")
             exit()
