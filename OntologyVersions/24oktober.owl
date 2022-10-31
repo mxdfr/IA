@@ -286,6 +286,7 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#improveBy -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#improveBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Muscles"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sport"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
