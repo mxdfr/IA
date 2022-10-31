@@ -2466,6 +2466,30 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#NutritionState"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesCondition"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#cancer"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesCondition"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesCondition"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#flu"/>
+            </owl:Restriction>
+        </rdf:type>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesCondition"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#cancer"/>
         <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
         <okt:causesCondition rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#flu"/>
@@ -2621,6 +2645,12 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highFat">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fat"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highFat</rdfs:label>
     </owl:NamedIndividual>
@@ -2631,6 +2661,12 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highFiber">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fiber"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highFiber</rdfs:label>
     </owl:NamedIndividual>
@@ -2641,6 +2677,12 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highProtein">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Protein"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highProtein</rdfs:label>
     </owl:NamedIndividual>
@@ -2651,6 +2693,12 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highSodium">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sodium"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highSodium</rdfs:label>
     </owl:NamedIndividual>
@@ -2661,6 +2709,12 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highSugars">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Sugars"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#UnhealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highSugars</rdfs:label>
     </owl:NamedIndividual>
@@ -2671,6 +2725,12 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#highVitamin">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Vitamin"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#CausesNutrientState"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
+            </owl:Restriction>
+        </rdf:type>
         <okt:CausesNutrientState rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthyNutritionState"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">highVitamin</rdfs:label>
     </owl:NamedIndividual>

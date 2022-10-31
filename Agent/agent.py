@@ -38,11 +38,11 @@ class Agent:
         self.start()
 
     def test_functions(self):
-        print("CONSEQUENTS")
-        print(self.get_consequents(self.ontology.Running, "not isBadFor", -1))
-        print("CHECK PROPERTY")
-        print(self.check_property(self.ontology.Running, "usesBodyPart", self.ontology.Knee))
-        print(self.get_relations(self.ontology.Running))
+        # print("CONSEQUENTS")
+        # print(self.get_consequents(self.ontology.Running, "not isBadFor", -1))
+        # print("CHECK PROPERTY")
+        # print(self.check_property(self.ontology.Running, "usesBodyPart", self.ontology.Knee))
+        # print(self.get_relations(self.ontology.Running))
         print(self.process_story(""))
 
 
@@ -111,23 +111,27 @@ class Agent:
 
     def classify_statements(self, statement):
         found_negative = False
-        print(statement)
         for property in range(1, len(statement), 2):
-            if self.dict_ontology_properties[statement[property]] == 'decrease':
+            if self.dict_ontology_properties[statement[property]] == 'decreases':
                 found_negative = True
 
         if found_negative:
-            return 'decrease'
+            return 'decreases'
         else:
-            return 'increase'
+            return 'increases'
 
     
     def make_linked_inferences(self, arguments, onto_consequents, tweet_consequents, domain, property, scores):
+        index = 0
         for linked_inferences in enumerate(arguments):
             if domain == linked_inferences[1][1][-1]:
+                index = 0
                 for cons in onto_consequents + tweet_consequents:
                     Class = self.classify_statements(linked_inferences[1][1] + [property, cons[0]])
-                    arguments.append((scores[linked_inferences[0]] + linked_inferences[1][0], linked_inferences[1][1] + [property, cons[0]], Class))
+
+                    arguments.append((scores[index] + linked_inferences[1][0], linked_inferences[1][1] + [property, cons[0]], Class))
+
+                index += 1
 
         return arguments
 
@@ -140,7 +144,7 @@ class Agent:
         The loop should be: while the sources can bounce off eachother
         """
         # Process the story
-        (object1, property, object2) = (self.ontology.Cookies, "hasNutrient", self.ontology.highSugars)#self.extract_query(story)
+        (object1, property, object2) = (self.ontology.Cookies, "causesCondition", self.ontology.cancer)#self.extract_query(story)
         # Check if the atoms are in the ontology:
         if property not in self.dict_ontology_properties.keys() and property not in self.tweets_properties_memory:
             print("Sorry, I don't know this property!")
@@ -155,9 +159,7 @@ class Agent:
         # If both atoms are in the ontology, check if the property is in the ontology
         knowledge_base = {1: self.ontology_atoms_memory, -1: self.tweets_atoms_memory}
 
-        story_true = False
         arguments = [(0, [object1], "")]
-        complete_arguments = []
         domains = [object1]
         for kb in knowledge_base:
             while domains:
@@ -181,21 +183,19 @@ class Agent:
                         scores = onto_scores + tweet_scores
                         arguments = self.make_linked_inferences(arguments, onto_consequents, tweet_consequents, domains[0], label, scores)
                         for obj in zip(scores, consequents):
-                            if object2 == obj[1][0] and property == label:
+                            if object2 == obj[1][0] or object2.label[0] == obj[1][0]:# and property == label:
                                 print("Yo ", obj[1])
                                 # save the linked inferences to the complete_arguments list with their scores to classify them later
                                 # arguments += self.classify_statements(obj[0], label)
                             else:
                                 domains += obj[1]
 
-                print(arguments)
                 new_arguments = []
                 for arg in enumerate(arguments):
                     if domains[0] != arg[1][1][-1]:
                         new_arguments.append(arg[1])
 
                 arguments = new_arguments
-                print(arguments)
 
                 domains.pop(0)
 
@@ -274,10 +274,12 @@ class Agent:
                 else:
                     label = object1.label[0]
 
-                if str(label).lower() in domains[prop[0]]:
+                if str(label) in domains[prop[0]]:
                     # calc trustworthyness
                     statement_scores.append(0)
                     consequents.append(prop[1]) # +prop
+                
+                consequents = list(dict.fromkeys(consequents))
 
         return statement_scores, consequents
 
@@ -315,7 +317,7 @@ class Agent:
                     label = object1
                 else:
                     label = object1.label[0]
-                if range[1] == property and str(label).lower() in domains[range[0]]:
+                if range[1] == property and str(label) in domains[range[0]]:
                     # calc trustworthyness
                     statement_scores.append(0)
                     consequents += [ranges[range[0]]]
@@ -335,8 +337,6 @@ class Agent:
         # For each class, add its instances to the memory
         for concept in self.ontology_atoms_memory:
             self.ontology_atoms_memory = self.ontology_atoms_memory.union(self.ontology.get_instances_of(concept))
-
-        print(self.ontology_atoms_memory)
 
         pass
 
@@ -381,7 +381,6 @@ class Agent:
         tweets_properties = list(tweets_opened['relation'].unique())
         # add them to the memory:
         self.tweets_properties_memory = self.tweets_properties_memory.union(tweets_properties)
-        print(self.tweets_properties_memory)
 
     def utility_function(self, true_statement_scores, false_statement_scores):
         """
