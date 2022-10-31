@@ -236,7 +236,14 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#hasFoodItem">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Meal"/>
+                    <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Food_item"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hasFoodItem</rdfs:label>
@@ -426,6 +433,12 @@
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Condition"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Allergy</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Amounts -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Amounts"/>
     
 
 
@@ -675,6 +688,12 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Injury">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthState"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#showsBy"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Pain"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Injury</rdfs:label>
     </owl:Class>
     
@@ -2797,6 +2816,9 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_Hamburger">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
         <okt:PreparedBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Frying"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Beef"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Bread"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Tomato"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_Hamburger</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2806,6 +2828,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_TomatoSoup">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Tomato"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_TomatoSoup</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2816,6 +2839,9 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_TunaSandwich">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
         <okt:PreparedBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Raw"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Bread"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Butter"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fish"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_TunaSandwich</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2826,6 +2852,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_french_fries">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
         <okt:PreparedBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Frying"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Potato"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_french_fries</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2836,6 +2863,10 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_lasagnaBolognese">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
         <okt:PreparedBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Cooking"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Beef"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Cheese"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Flour"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Tomato"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_lasagnaBolognese</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2846,6 +2877,10 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_pizza">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
         <okt:PreparedBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Baking"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Cheese"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Flour"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Red_Pepper"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Tomato"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_pizza</rdfs:label>
     </owl:NamedIndividual>
     
@@ -2856,6 +2891,9 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#recipe_salad">
         <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Recipe"/>
         <okt:PreparedBy rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Raw"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Aubergine"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Lettuce"/>
+        <okt:hasFoodItem rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Tomato"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">recipe_salad</rdfs:label>
     </owl:NamedIndividual>
     
