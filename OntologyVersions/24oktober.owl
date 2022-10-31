@@ -437,12 +437,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Amounts -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Amounts"/>
-    
-
-
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Body_part">
