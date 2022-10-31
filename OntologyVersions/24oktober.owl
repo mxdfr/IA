@@ -2244,6 +2244,15 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Steak -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Steak">
+        <rdf:type rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#RedMeat"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Steak</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Stomachache -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Stomachache">
