@@ -7,6 +7,11 @@ import werkzeug.serving
 from owlready2 import *
 from owlready2.sparql.endpoint import *
 
+# for trust computation:
+from trust_network import create_trust_network
+from trust_scores import all as base_scores
+from trust_scores import agent as agent_scores
+
 # Ignore useless warnings
 warnings.filterwarnings("ignore")
 
@@ -23,7 +28,7 @@ class Agent:
 
         self.ontology_source = ontology
         self.tweets_source = tweets
-
+        self.trust_scores = create_trust_network(base_scores, agent_scores)
 
         self.ontology = self.open_ontology(ontology)
 
@@ -44,7 +49,6 @@ class Agent:
         # print(self.check_property(self.ontology.Running, "usesBodyPart", self.ontology.Knee))
         # print(self.get_relations(self.ontology.Running))
         print(self.process_story(""))
-
 
 
     def open_ontology(self, ontology):
@@ -391,6 +395,7 @@ class Agent:
         """
         # if < 0: story = false, else: story = true
         return sum(true_statement_scores) - sum(false_statement_scores)
+
 
 if __name__ == "__main__":
     # Run the agent
