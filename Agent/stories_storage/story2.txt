@@ -1,4 +1,4 @@
 Story: Gabriella follows an influencer @Eric_Conn who promotes a strictly carnivorous diet. One day she sees a tweet by him, saying that eating steak could prevent many diseases people suffer from these days, including cancer. This goes against her existing belief that steak causes cancer, so she asks her agent if this is true.
 Domain:Steak
 Property:causes
-Range:cancer
+Range:Cancer
