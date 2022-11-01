@@ -107,6 +107,8 @@ class Agent:
             results = self.process_story(story)
             if results:
                 self.utility_function(results)
+            else:
+                print("Sorry could not find any information on that!!!")
 
         self.awaiting_stories = {}
 
@@ -247,19 +249,6 @@ class Agent:
         return [0], []
 
 
-    # def get_classes_instances(self, superClass):
-    #     """
-    #     Return all the subclasses with their instances
-    #     """
-    #     classes_and_instances = [superClass] + superClass.instances()
-    #     print(classes_and_instances)
-    #     for Class in superClass.subclasses():
-    #         subclasses = self.get_classes_instances(Class)
-    #         # classes_and_instances += classes_and_instances + subclasses
-
-    #     return classes_and_instances
-
-
     def get_relations(self, object1, ontology_type=1):
         """
         Object1 should be an owl object and property a string/label
@@ -269,11 +258,12 @@ class Agent:
         consequents = []
         statement_scores = []
         if ontology_type == 1:
-            consequents = list(default_world.sparql("""
-                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
-                                SELECT DISTINCT ?property
-                                { ?? rdf:type [owl:onProperty ?property] }
-                                """, [object1]))
+            if self.exists(object1, self.ontology_atoms_memory):
+                consequents = list(default_world.sparql("""
+                                    PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                    SELECT DISTINCT ?property
+                                    { ?? rdf:type [owl:onProperty ?property] }
+                                    """, [object1]))
 
             consequents = [item for sublist in consequents for item in sublist]
 
@@ -311,11 +301,12 @@ class Agent:
         consequents = []
         statement_scores = []
         if ontology_type == 1:
-            consequents = list(default_world.sparql("""
-                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
-                                SELECT ?cons
-                                { ?? table:""" + property + """ ?cons }
-                            """, [object1]))
+            if self.exists(object1, self.ontology_atoms_memory):
+                consequents = list(default_world.sparql("""
+                                    PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                    SELECT ?cons
+                                    { ?? table:""" + property + """ ?cons }
+                                """, [object1]))
 
             statement_scores = [self.PROT_SCORE] * len(consequents)
         else:
@@ -341,9 +332,6 @@ class Agent:
                     label = object1.label[0]
                 if range[1] == property and str(label) in domains[range[0]]:
                     # calc trustworthyness
-                    print(domains[range[0]])
-                    print(UserID[range[0]])
-                    print(ranges[range[0]])
                     statement_scores.append(create_trust_network(all, agent)[UserID[range[0]]]['e'])
                     consequents += [ranges[range[0]]]
 
