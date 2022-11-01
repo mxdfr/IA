@@ -1,4 +1,7 @@
+from genericpath import exists
 import os
+from trust_scores import all, agent
+from trust_network import create_trust_network
 import time
 from xml.etree.ElementInclude import default_loader
 import pandas as pd
@@ -37,18 +40,8 @@ class Agent:
         self.update_ontology_properties_memory()
         self.update_tweets_properties_memory()
 
-        self.test_functions()
-
         self.stories_folder_name = folder_name
         self.start()
-
-    def test_functions(self):
-        # print("CONSEQUENTS")
-        # print(self.get_consequents(self.ontology.Running, "not isBadFor", -1))
-        # print("CHECK PROPERTY")
-        # print(self.check_property(self.ontology.Running, "usesBodyPart", self.ontology.Knee))
-        # print(self.get_relations(self.ontology.Running))
-        print(self.process_story(""))
 
 
     def open_ontology(self, ontology):
@@ -68,10 +61,10 @@ class Agent:
 
 
         # If there are stories, process them
+        print(self.awaiting_stories)
         if len(self.awaiting_stories) > 0:
-            # returns a list of tuples [(class, score)]
+            # returns a list of tuples [(class, linked inferences, score)]
             self.process_stories()
-            # utility_function(scores_true, scores_false)
         else:
             time.sleep(25)
             self.start()
@@ -110,21 +103,28 @@ class Agent:
     def process_stories(self):
         # Process all the stories in the queue
         for story in self.awaiting_stories:
-            self.process_story(story)
-            self.awaiting_stories.remove(story)
+            print("PROCESSING: ", story)
+            results = self.process_story(story)
+            if results:
+                self.utility_function(results)
+
+        self.awaiting_stories = {}
 
     def classify_statements(self, statement):
         found_negative = False
         for property in range(1, len(statement), 2):
             if self.dict_ontology_properties[statement[property]] == 'decreases':
-                found_negative = True
+                if found_negative:
+                    found_negative = False
+                else:
+                    found_negative = True
 
         if found_negative:
             return 'decreases'
         else:
             return 'increases'
 
-    
+
     def make_linked_inferences(self, arguments, onto_consequents, tweet_consequents, domain, property, scores):
         index = 0
         for linked_inferences in enumerate(arguments):
@@ -140,6 +140,17 @@ class Agent:
         return arguments
 
 
+    def exists(self, object, memory):
+        for obj in memory:
+            if isinstance(obj, str):
+                if obj == object:
+                    return True
+            elif obj.label[0] == object:
+                return True
+
+        return False
+
+    
     def process_story(self, story):
         """
         If you cant find P->Q directly then extract all P's relations (with all its properties) and classify them
@@ -148,17 +159,24 @@ class Agent:
         The loop should be: while the sources can bounce off eachother
         """
         # Process the story
-        (object1, property, object2) = (self.ontology.Cookies, "causesCondition", self.ontology.cancer)#self.extract_query(story)
+        (object1, property, object2) = self.extract_query(story)[:3]
         # Check if the atoms are in the ontology:
         if property not in self.dict_ontology_properties.keys() and property not in self.tweets_properties_memory:
             print("Sorry, I don't know this property!")
-            return
-        if object1 not in self.ontology_atoms_memory.union(self.tweets_atoms_memory):
+            return None
+        if not self.exists(object1, self.ontology_atoms_memory.union(self.tweets_atoms_memory)):
             print(f"Sorry, I don't know this object: {object1}!")
-            return
-        if object2 not in self.ontology_atoms_memory.union(self.tweets_atoms_memory):
+            return None
+        if not self.exists(object2, self.ontology_atoms_memory.union(self.tweets_atoms_memory)):
             print(f"Sorry, I don't know this object: {object2}!")
-            return
+            return None
+
+        for obj in self.ontology_atoms_memory.union(self.tweets_atoms_memory):
+            if not isinstance(obj, str):
+                if obj.label[0] == object1:
+                    object1 = obj
+                if obj.label[0] == object2:
+                    object2 = obj
 
         # If both atoms are in the ontology, check if the property is in the ontology
         knowledge_base = {1: self.ontology_atoms_memory, -1: self.tweets_atoms_memory}
@@ -187,11 +205,7 @@ class Agent:
                         scores = onto_scores + tweet_scores
                         arguments = self.make_linked_inferences(arguments, onto_consequents, tweet_consequents, domains[0], label, scores)
                         for obj in zip(scores, consequents):
-                            if object2 == obj[1][0] or object2.label[0] == obj[1][0]:# and property == label:
-                                print("Yo ", obj[1])
-                                # save the linked inferences to the complete_arguments list with their scores to classify them later
-                                # arguments += self.classify_statements(obj[0], label)
-                            else:
+                            if not (object2 == obj[1][0] or object2.label[0] == obj[1][0]):# and property == label:
                                 domains += obj[1]
 
                 new_arguments = []
@@ -308,6 +322,10 @@ class Agent:
             # extract consequents from mock_tweets_db
             tweets_opened = pd.read_excel(self.tweets_source)
 
+            UserID = []
+            for id in tweets_opened["UserID"]:
+                UserID.append(id)
+
             domains = []
             for antec in tweets_opened["predecessor atom"]:
                 domains.append(antec.split(", "))
@@ -323,7 +341,10 @@ class Agent:
                     label = object1.label[0]
                 if range[1] == property and str(label) in domains[range[0]]:
                     # calc trustworthyness
-                    statement_scores.append(0)
+                    print(domains[range[0]])
+                    print(UserID[range[0]])
+                    print(ranges[range[0]])
+                    statement_scores.append(create_trust_network(all, agent)[UserID[range[0]]]['e'])
                     consequents += [ranges[range[0]]]
 
         return statement_scores, consequents
@@ -359,7 +380,6 @@ class Agent:
         """
         # Add ontology properties to the memory
         self.ontology_properties_memory = self.ontology_properties_memory.union(self.ontology.properties())
-        print(self.ontology_properties_memory)
 
         self.properties_dictionary()
 
@@ -386,19 +406,38 @@ class Agent:
         # add them to the memory:
         self.tweets_properties_memory = self.tweets_properties_memory.union(tweets_properties)
 
-    def utility_function(self, true_statement_scores, false_statement_scores):
+    def utility_function(self, statements):
         """
         Function for calculating utility
         :param true_statement_scores: list of trustworthiness scores for statements that make the story true
         :param false_statement_scores: list of trustworthiness scores for statements that make the story false
         :return: difference between the two total trustworthiness scores
         """
-        # if < 0: story = false, else: story = true
-        return sum(true_statement_scores) - sum(false_statement_scores)
+        true_statement_scores = [statement[0] for statement in statements if statement[2] == 'increases']
+        true_statement = [statement[1] for statement in statements if statement[2] == 'increases']
+        false_statement_scores = [statement[0] for statement in statements if statement[2] == 'decreases']
+        false_statement = [statement[1] for statement in statements if statement[2] == 'decreases']
+        print("\n\nThese are the Statements found from the Ontology and the Extrenal Source and their Trustworthiness Scores\n")
+        print("Inference rules that agree the story:\n")
+        for true in zip(true_statement, true_statement_scores):
+            for rule in true[0][:-1]:
+                print(str(rule), end = " -> ")
+            print(true[0][-1], " ", true[1])
+
+        print("\n\nInference rules that disagree the story:\n")
+        for false in zip(false_statement, false_statement_scores):
+            for rule in false[0][:-1]:
+                print(str(rule), end = " -> ")
+            print(false[0][-1], " ", false[1])
+
+        if sum(true_statement_scores) - sum(false_statement_scores) >= 0:
+            print("\n\nFrom the linked inference we can see that the story is true\n")
+        else:
+            print("\n\nFrom the linked inference we can see that the story is false\n")
 
 
 if __name__ == "__main__":
     # Run the agent
-    agent = Agent(ontology="../OntologyVersions/24oktober.owl", tweets="./tweet_db.xlsx", folder_name="./Stories")
+    agent = Agent(ontology="../OntologyVersions/24oktober.owl", tweets="./tweet_db.xlsx", folder_name="stories_storage")
 
     pass
