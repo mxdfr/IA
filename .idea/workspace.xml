@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6e2b6be8-c03f-46cf-b901-50c13272693a" name="Changes" comment="tweets updated!">
-      <change afterPath="$PROJECT_DIR$/Agent/trust_network.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Agent/trust_scores.py" afterDir="false" />
+    <list default="true" id="6e2b6be8-c03f-46cf-b901-50c13272693a" name="Changes" comment="Added trustworthiness to the agent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Agent/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/stories_storage/story1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/stories_storage/story1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/stories_storage/story2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/stories_storage/story2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/stories_storage/story3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/stories_storage/story3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/stories_storage/story5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/stories_storage/story5.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Agent/tweet_db.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Agent/tweet_db.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OntologyVersions/24oktober.owl" beforeDir="false" afterPath="$PROJECT_DIR$/OntologyVersions/24oktober.owl" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667165327782</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added trustworthiness to the agent">
+      <created>1667221907754</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667221907755</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,6 +115,7 @@
     <MESSAGE value="Agent class skeleton/first implementation" />
     <MESSAGE value="Add functions to get atoms + relations from twitter" />
     <MESSAGE value="tweets updated!" />
-    <option name="LAST_COMMIT_MESSAGE" value="tweets updated!" />
+    <MESSAGE value="Added trustworthiness to the agent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added trustworthiness to the agent" />
   </component>
 </project>

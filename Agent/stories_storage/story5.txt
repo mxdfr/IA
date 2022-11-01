@@ -1,4 +1,4 @@
 Story:Martha has a headache and muscle pain. She is worried that she has cancer, so she asks her agent about this.
 Domain:Headache and Muscle_Pain 
 Property:isSymptomOf
-Range:cancer
+Range:Cancer
