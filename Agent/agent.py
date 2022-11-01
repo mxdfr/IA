@@ -258,12 +258,11 @@ class Agent:
         consequents = []
         statement_scores = []
         if ontology_type == 1:
-            if self.exists(object1, self.ontology_atoms_memory):
-                consequents = list(default_world.sparql("""
-                                    PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
-                                    SELECT DISTINCT ?property
-                                    { ?? rdf:type [owl:onProperty ?property] }
-                                    """, [object1]))
+            consequents = list(default_world.sparql("""
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                SELECT DISTINCT ?property
+                                { ?? rdf:type [owl:onProperty ?property] }
+                                """, [object1]))
 
             consequents = [item for sublist in consequents for item in sublist]
 
@@ -301,12 +300,11 @@ class Agent:
         consequents = []
         statement_scores = []
         if ontology_type == 1:
-            if self.exists(object1, self.ontology_atoms_memory):
-                consequents = list(default_world.sparql("""
-                                    PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
-                                    SELECT ?cons
-                                    { ?? table:""" + property + """ ?cons }
-                                """, [object1]))
+            consequents = list(default_world.sparql("""
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                SELECT ?cons
+                                { ?? table:""" + property + """ ?cons }
+                            """, [object1]))
 
             statement_scores = [self.PROT_SCORE] * len(consequents)
         else:
