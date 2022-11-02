@@ -1,4 +1,4 @@
-Story: Chad wants to treat his girlfriend Taylor to a nice pasta carbonara dinner, but she is lactose intolerant. He wants to know if she can eat this, so he asks his agent if pasta carbonara contains dairy.
+Story: Chad wants to treat his girlfriend Taylor to a nice pasta carbonara dinner, but she is lactose intolerant. He wants to know if she can eat this, so he asks his agent if pasta carbonara contains cream.
 Domain:Carbonara
 Property:contains
-Range:Dairy
+Range:Cream
