@@ -53,6 +53,17 @@
     
 
 
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesInjury -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesInjury">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Active"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Injury"/>
+        <rdfs:comment>increases</rdfs:comment>
+        <rdfs:label>causesInjury</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesNutrientState -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#causesNutrientState">
@@ -276,6 +287,15 @@
         <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Location"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">increases</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">locatedInCity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#notCausesInjury -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#notCausesInjury">
+        <rdfs:comment>Neutral</rdfs:comment>
+        <rdfs:label>notCausesInjury</rdfs:label>
     </owl:ObjectProperty>
     
 
