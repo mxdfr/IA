@@ -358,7 +358,7 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Location"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Hospital"/>
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Neutral</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">treatedAt</rdfs:label>
     </owl:ObjectProperty>
@@ -458,8 +458,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Condition">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthState"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Disease"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Injury"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Condition</rdfs:label>
     </owl:Class>
     
@@ -505,7 +503,6 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Disease">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#HealthState"/>
-        <owl:disjointWith rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Injury"/>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disease</rdfs:label>
     </owl:Class>
     
