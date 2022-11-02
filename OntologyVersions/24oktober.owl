@@ -294,7 +294,7 @@
     <!-- http://www.semanticweb.org/weron/ontologies/2022/8/24okt#notCausesInjury -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#notCausesInjury">
-        <rdfs:comment>Neutral</rdfs:comment>
+        <rdfs:comment>decreases</rdfs:comment>
         <rdfs:label>notCausesInjury</rdfs:label>
     </owl:ObjectProperty>
     
