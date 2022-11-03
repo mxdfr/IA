@@ -73,10 +73,8 @@ class Agent:
         self.start()
     
     def update_awaiting_stories(self):
-        """
-        Veronika
-        Check for new txt files in stories folder and update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range, story name)}
-        """
+    #Check for new txt files in stories folder and
+    # update self.awaiting_stories = dictionary {key=story, value=tuple(domain, property, range, story name)}
 
         if os.path.isdir(self.stories_folder_name):
             if not os.listdir(self.stories_folder_name):
@@ -191,7 +189,6 @@ class Agent:
         subs = self.get_subclasses(object2)
         for kb in knowledge_base:
             while domains:
-                # print("Domain ", domains[0])
                 onto_scores, onto_properties = self.get_relations(domains[0], ontology_type=kb)
                 tweet_scores, tweet_properties = self.get_relations(domains[0], ontology_type=-1 * kb)
                 properties = onto_properties + tweet_properties
@@ -200,15 +197,12 @@ class Agent:
                     for p in properties:
 
                         if isinstance(p, str):
-                            print("Prop from tweeter ", p)
                             label = p
                         else:
-                            print("Prop ", p.label[0])
                             label = p.label[0]
                         onto_scores, onto_consequents = self.get_consequents(domains[0], label, ontology_type=kb)
                         tweet_scores, tweet_consequents = self.get_consequents(domains[0], label, ontology_type=-1 * kb)
                         consequents = onto_consequents + tweet_consequents
-                        # print("cons:" ,consequents)
                         scores = onto_scores + tweet_scores
                         arguments = self.make_linked_inferences(arguments, onto_consequents, tweet_consequents, domains[0], label, scores)
                         for obj in zip(scores, consequents):
@@ -218,55 +212,50 @@ class Agent:
                 new_arguments = []
                 for arg in enumerate(arguments):
                     if domains[0] != arg[1][1][-1] or arg[1][1][-1] in subs:
-                        # print(arg[1][1][-1])
                         new_arguments.append(arg[1])
 
                 arguments = new_arguments
 
                 if not isinstance(domains[0], str):
                     domains += self.get_subclasses(domains[0])
-                # print(domains)
                 domains.pop(0)
 
         return arguments
 
 
     def get_subclasses(self, object):
+        # Get subclasses of a given object
         subclasses = []
-        yo = [object]
+        objects_to_check = [object]
         flag = True
         while flag:
             flag = False
             are_instances = []
-            while yo:
-                # yo = self.flatten(yo)
+            while objects_to_check:
                 subs = list(default_world.sparql("""
                                 PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
                                 SELECT ?class
                                 { ?class rdfs:subClassOf* ?? }
-                                """, [yo[0]]))
+                                """, [objects_to_check[0]]))
 
                 subs = self.flatten(subs)
-                subs = [sub for sub in subs if sub != yo[0]]    
+                subs = [sub for sub in subs if sub != objects_to_check[0]]
 
                 if len(subs) != 0:
                     flag = True
                     subclasses += subs
-                    yo += subs
-                elif yo[0] not in are_instances and yo[0] in list(self.ontology.classes()):
-                    inst = yo[0].instances()
-                    # print(yo[0], "DWADWADWA", inst)
+                    objects_to_check += subs
+                elif objects_to_check[0] not in are_instances and objects_to_check[0] in list(self.ontology.classes()):
+                    inst = objects_to_check[0].instances()
                     are_instances += inst
                     flag = True
                     subclasses += inst
-                    yo += inst
+                    objects_to_check += inst
 
-                x = yo.pop(0)
-                # print(yo)
+                x = objects_to_check.pop(0)
 
             subclasses = self.flatten(subclasses)
             subclasses = list(dict.fromkeys(subclasses))
-            # print("dwadwa", subclasses)
 
         return subclasses
 
@@ -287,8 +276,6 @@ class Agent:
         For now it returns the score of the statement
         If they are not related then it returns 0
         """
-
-        prop_to_check = self.ontology_properties_memory if ontology_type == 1 else self.tweets_properties_memory
 
         scores, relations = self.get_consequents(object1, property, ontology_type)
         for rel in enumerate(relations):
@@ -325,7 +312,6 @@ class Agent:
                                 """, [object1]))
 
             consequents = [item for sublist in consequents for item in sublist]
-            # print("dwadwa", consequents)
 
             statement_scores = [self.PROT_SCORE] * len(consequents)
         else:
@@ -399,7 +385,6 @@ class Agent:
     def update_ontology_atoms_memory(self):
         # Update the ontology atoms memory
         """
-        Hiba
         Get all the classes and the instances from the ontology
         Returns a list
         """
@@ -421,7 +406,6 @@ class Agent:
     def update_ontology_properties_memory(self):
         # Update the ontology properties memory
         """
-        Hiba
         Get all the object properties from the ontology
         Returns a dictionary with the properties as the key and their type of class as the value
         """
@@ -439,7 +423,6 @@ class Agent:
         tweets_opened = pd.read_excel(self.tweets_source)
         # get the atoms from the tweets:
         tweets_atoms = list(tweets_opened['predecessor atom'].unique()) + list(tweets_opened['successor atom'].unique())
-        #tweets_atoms.append(tweets_opened['successor atom'].unique())
         # add them to the memory:
         self.tweets_atoms_memory = self.tweets_atoms_memory.union(tweets_atoms)
 
@@ -464,14 +447,14 @@ class Agent:
         true_statement = [statement[1] for statement in statements if statement[2] == 'increases']
         false_statement_scores = [statement[0] for statement in statements if statement[2] == 'decreases']
         false_statement = [statement[1] for statement in statements if statement[2] == 'decreases']
-        print("\n\nThese are the Statements found from the Ontology and the Extrenal Source and their Trustworthiness Scores\n")
-        print("Inference rules that agree the story:\n")
+        print("\n\nThese are the inferences found in the ontology and the external source with their trustworthiness scores\n")
+        print("Inference rules that justify with the story:\n")
         for true in zip(true_statement, true_statement_scores):
             for rule in true[0][:-1]:
                 print(str(rule), end = " -> ")
             print(true[0][-1], " ", true[1])
 
-        print("\n\nInference rules that disagree the story:\n")
+        print("\n\nInference rules that falsify with the story:\n")
         for false in zip(false_statement, false_statement_scores):
             for rule in false[0][:-1]:
                 print(str(rule), end = " -> ")
