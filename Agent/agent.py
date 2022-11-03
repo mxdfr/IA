@@ -233,10 +233,10 @@ class Agent:
             are_instances = []
             while objects_to_check:
                 subs = list(default_world.sparql("""
-                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
-                                SELECT ?class
-                                { ?class rdfs:subClassOf* ?? }
-                                """, [objects_to_check[0]]))
+                                    PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                    SELECT ?class
+                                    { ?class rdfs:subClassOf* ?? }
+                                    """, [objects_to_check[0]]))
 
                 subs = self.flatten(subs)
                 subs = [sub for sub in subs if sub != objects_to_check[0]]
@@ -309,6 +309,11 @@ class Agent:
                                 PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
                                 SELECT DISTINCT ?property
                                 { ?? rdf:type [owl:onProperty ?property] }
+                                """, [object1])) +\
+                        list(default_world.sparql("""
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                SELECT DISTINCT ?property
+                                { ?? rdfs:subClassOf [owl:onProperty ?property] }
                                 """, [object1]))
 
             consequents = [item for sublist in consequents for item in sublist]
@@ -351,7 +356,13 @@ class Agent:
                                 PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
                                 SELECT ?cons
                                 { ?? table:""" + property + """ ?cons }
-                            """, [object1]))
+                            """, [object1])) +\
+                            list(default_world.sparql("""
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                SELECT ?value
+                                { ?? rdfs:subClassOf [ owl:hasValue ?value ; 
+                                    owl:onProperty [ rdfs:label ?? ] ] . }
+                                """, [object1, property]))
 
             statement_scores = [self.PROT_SCORE] * len(consequents)
         else:
@@ -447,6 +458,11 @@ class Agent:
         true_statement = [statement[1] for statement in statements if statement[2] == 'increases']
         false_statement_scores = [statement[0] for statement in statements if statement[2] == 'decreases']
         false_statement = [statement[1] for statement in statements if statement[2] == 'decreases']
+
+        if not true_statement and not false_statement:
+            print("\nSorry could not find any information\n")
+            return
+
         print("\n\nThese are the inferences found in the ontology and the external source with their trustworthiness scores\n")
         print("Inference rules that justify with the story:\n")
         for true in zip(true_statement, true_statement_scores):
