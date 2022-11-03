@@ -706,7 +706,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#showsBy"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Pain"/>
+                <owl:hasValue rdf:resource="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Joint_pain"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Injury</rdfs:label>
@@ -3044,6 +3044,213 @@
     </rdf:Description>
     <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Fish">
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fish</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Ankle_Sprain"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Broken_Arm"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Ankle_Sprain"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Broken_Leg"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Ankle_Sprain"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Dislocated_Shoulder"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Broken_Arm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Broken_Leg"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Broken_Arm"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Dislocated_Shoulder"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Broken_Leg"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Dislocated_Shoulder"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Vegetarian"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#glutenAllergy"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Vegetarian"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lactoseIntolerance"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Vegetarian"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#peanutAllergy"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#anemia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#anemia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#anemia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#proteinDeficiency"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#anemia"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#vitaminDeficiency"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#arithritis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#cancer"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#arithritis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#flu"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#arithritis"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Alheimer&apos;s"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#cancer"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#flu"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#cancer"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Alheimer&apos;s"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#proteinDeficiency"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#diabetes"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#vitaminDeficiency"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#flu"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#Alheimer&apos;s"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#glutenAllergy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lactoseIntolerance"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#glutenAllergy"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#peanutAllergy"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#lactoseIntolerance"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#peanutAllergy"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#proteinDeficiency"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#obesity"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#vitaminDeficiency"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#proteinDeficiency"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/weron/ontologies/2022/8/24okt#vitaminDeficiency"/>
+        </owl:distinctMembers>
     </rdf:Description>
 </rdf:RDF>
 
