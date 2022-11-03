@@ -1,4 +1,4 @@
 Kelsi’s mother tells her that her grandmother got Alzheimer’s disease from eating so many fish sticks and that she should eat healthier before she ends up the same way. Taylor can’t believe this, so she asks her agent if eating too many hamburgers could really cause Alzheimer’s
-Domain:FishSticks
-Property:causes
+Domain:Fish
+Property:causesCondition
 Range:Alzheimer's
