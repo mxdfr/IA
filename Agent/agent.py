@@ -94,7 +94,7 @@ class Agent:
                             elif line.startswith("Range:"):
                                 range = line.split(":")[1]
                         self.awaiting_stories[story] = (domain, property, range, story)
-                    os.remove(self.stories_folder_name +'/'+story)
+                    # os.remove(self.stories_folder_name +'/'+story)
         else:
             print("Given directory doesn't exist")
             exit()
@@ -184,10 +184,14 @@ class Agent:
         knowledge_base = {1: self.ontology_atoms_memory, -1: self.tweets_atoms_memory}
 
         arguments = [(0, [object1], "")]
+        if not isinstance(object1, str):
+            for s in self.get_subclasses(object1):
+                arguments.append((0, [s], ""))
         domains = [object1]
+        subs = self.get_subclasses(object2)
         for kb in knowledge_base:
             while domains:
-                print("Domain ", domains[0])
+                # print("Domain ", domains[0])
                 onto_scores, onto_properties = self.get_relations(domains[0], ontology_type=kb)
                 tweet_scores, tweet_properties = self.get_relations(domains[0], ontology_type=-1 * kb)
                 properties = onto_properties + tweet_properties
@@ -204,22 +208,67 @@ class Agent:
                         onto_scores, onto_consequents = self.get_consequents(domains[0], label, ontology_type=kb)
                         tweet_scores, tweet_consequents = self.get_consequents(domains[0], label, ontology_type=-1 * kb)
                         consequents = onto_consequents + tweet_consequents
+                        # print("cons:" ,consequents)
                         scores = onto_scores + tweet_scores
                         arguments = self.make_linked_inferences(arguments, onto_consequents, tweet_consequents, domains[0], label, scores)
                         for obj in zip(scores, consequents):
-                            if not (object2 == obj[1][0] or object2.label[0] == obj[1][0]):# and property == label:
+                            if not (object2 == obj[1][0] or object2.label[0] == obj[1][0])  or obj[1][0] in subs:# and property == label:
                                 domains += obj[1]
 
                 new_arguments = []
                 for arg in enumerate(arguments):
-                    if domains[0] != arg[1][1][-1]:
+                    if domains[0] != arg[1][1][-1] or arg[1][1][-1] in subs:
+                        # print(arg[1][1][-1])
                         new_arguments.append(arg[1])
 
                 arguments = new_arguments
 
+                if not isinstance(domains[0], str):
+                    domains += self.get_subclasses(domains[0])
+                # print(domains)
                 domains.pop(0)
 
         return arguments
+
+
+    def get_subclasses(self, object):
+        subclasses = []
+        yo = [object]
+        flag = True
+        while flag:
+            flag = False
+            are_instances = []
+            while yo:
+                # yo = self.flatten(yo)
+                subs = list(default_world.sparql("""
+                                PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
+                                SELECT ?class
+                                { ?class rdfs:subClassOf* ?? }
+                                """, [yo[0]]))
+
+                subs = self.flatten(subs)
+                subs = [sub for sub in subs if sub != yo[0]]    
+
+                if len(subs) != 0:
+                    flag = True
+                    subclasses += subs
+                    yo += subs
+                elif yo[0] not in are_instances and yo[0] in list(self.ontology.classes()):
+                    inst = yo[0].instances()
+                    # print(yo[0], "DWADWADWA", inst)
+                    are_instances += inst
+                    flag = True
+                    subclasses += inst
+                    yo += inst
+
+                x = yo.pop(0)
+                # print(yo)
+
+            subclasses = self.flatten(subclasses)
+            subclasses = list(dict.fromkeys(subclasses))
+            # print("dwadwa", subclasses)
+
+        return subclasses
 
 
     def extract_query(self, story):
@@ -249,6 +298,17 @@ class Agent:
         return [0], []
 
 
+    def flatten(self, l):
+        ll = []
+        for elem in l:
+            if type(elem) == list:
+                ll += self.flatten(elem)
+            else:
+                ll.append(elem)
+
+        return ll
+
+
     def get_relations(self, object1, ontology_type=1):
         """
         Object1 should be an owl object and property a string/label
@@ -265,6 +325,7 @@ class Agent:
                                 """, [object1]))
 
             consequents = [item for sublist in consequents for item in sublist]
+            # print("dwadwa", consequents)
 
             statement_scores = [self.PROT_SCORE] * len(consequents)
         else:
@@ -300,7 +361,7 @@ class Agent:
         consequents = []
         statement_scores = []
         if ontology_type == 1:
-            consequents = list(default_world.sparql("""
+            consequents += list(default_world.sparql("""
                                 PREFIX table:<http://www.semanticweb.org/weron/ontologies/2022/8/24okt#>
                                 SELECT ?cons
                                 { ?? table:""" + property + """ ?cons }
