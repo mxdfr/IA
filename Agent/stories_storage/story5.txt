@@ -1,4 +1,4 @@
 Story:Martha has been experiencing memory loss. She is worried that she might have some sort of dementia, so she asks her agent about this.
-Domain:MemoryLoss
-Property:isSymptomOf
-Range:Alzheimer's
+Domain:Alzheimer's
+Property:showsBy
+Range:MemoryLoss
